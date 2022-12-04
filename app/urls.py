@@ -21,8 +21,7 @@ urlpatterns = [
     path('cuentas/',include('django.contrib.auth.urls')),
     path('home', views.home),
     path('ingresarArticulos', views.ingresarArticulos),
-    path('registrarArticulos/ingresarArticulos', views.ingresarArticulos),
-    path('registrarArticulos/', views.registrarArticulos),
+    path('registrarArticulos', views.registrarArticulos),
     path('registro', views.registro, name='registro'),
     path('logout',views.cerrar_sesion),
 

@@ -48,3 +48,6 @@ def registrarArticulos(request):
     AppAdministracion_InsumosOficina.objects.create(nro_articulo = nro_arti,nombre = nombre_arti, ubicacion = ubicacion_arti,stock=stock_arti, descripcion = descripcion_arti)
     return render(request, 'respuestaHtas.html',{"mensaje": mensaje})
 
+
+    
+

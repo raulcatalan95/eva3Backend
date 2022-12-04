@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 class AppAdministracion_Vehiculos(models.Model):
     patente =  models.CharField(primary_key = True, max_length=6)
-    numero_chasis = models.CharField(unique=True, null=False)
+    numero_chasis = models.CharField(unique=True, null=False, max_length=17)
     marca = models.CharField(null=False, max_length=20)
     modelo= models.CharField(null=False, max_length=10)
     ultima_revision= models.DateField(null=False)

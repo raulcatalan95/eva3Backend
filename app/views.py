@@ -102,7 +102,36 @@ def editarArticulo(request):
 
         return render(request, "adminOficina/actualizarArticulos.html", {"mensaje":mensaje})
 
-    pass
+def listarArticulos(request):
+
+    z = AppAdministracion_InsumosOficina.objects.all()
+
+    return render(request,"adminOficina/listarArticulos.html", {'articulos': z})
+
+def filtroarticulo(request):
+    if request.GET["nombre_artic"]:
+        fullarticulo = request.GET["nombre_artic"] # Get nombre
+        q = AppAdministracion_InsumosOficina.objects.filter(nombre__iexact = fullarticulo) #comparacion del nombre ingresado
+        w=q.count() #Contador de resgistros para el cliente buscado
+        return render(request, "adminOficina/listarArticulos.html", {"fullarticulo" : q,"query":fullarticulo, "contador": w})
+
+    if request.GET["numero_artic"]:
+        fullarticulo = request.GET["numero_artic"] # Get nombre
+        q = AppAdministracion_InsumosOficina.objects.filter(nro_articulo__iexact = fullarticulo) #comparacion del nombre ingresado
+        w=q.count() #Contador de resgistros para el cliente buscado
+        return render(request, "adminOficina/listarArticulos.html", {"fullarticulo" : q,"query":fullarticulo, "contador": w})
+  
+    if request.GET["ubicacion_artic"]:
+        fullarticulo = request.GET["ubicacion_artic"] # Get nombre
+        q = AppAdministracion_InsumosOficina.objects.filter(ubicacion__iexact = fullarticulo) #comparacion del nombre ingresado
+        w=q.count() #Contador de resgistros para el cliente buscado
+        return render(request, "adminOficina/listarArticulos.html", {"fullarticulo" : q,"query":fullarticulo, "contador": w})
+
+    else:
+        mensaje = "NO se indico ningun parametro de busqueda"
+        z = AppAdministracion_InsumosOficina.objects.all()
+        return render(request,"adminOficina/listarArticulos.html",{"mensaje": mensaje,'articulos': z})
+
 
 
     

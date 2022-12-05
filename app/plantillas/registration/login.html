@@ -9,16 +9,16 @@
 <body>
     {% if forms.errors %}
     <h1>A sucedido algún problema con lo ingresado</h1>
-    <h1>PRUEBA PULL</h1>
     {% endif %}
     {% if next %}
     <h1>No puedes ingresar a esta página</h1>
     {% endif %}
-    <form method="post" action="{% url 'login' %}">{% csrf_token %}
-        <p>Usuario: {{ form.username }} </p>
-        <p>Contraseña: {{ form.password }} </p>
+    <form method="post" action="sesion">{% csrf_token %}
+        <p>Usuario:</p>
+        <input type="text" name="user_name">
+        <p>Contraseña: </p>
+        <input type="password" name="contrasena">
         <input type="submit" value="login"/>
-        <input type="hidden" name="next" value="{{ next }}"/>
     </form>
 </body>
 </html>

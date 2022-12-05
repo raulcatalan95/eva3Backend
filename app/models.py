@@ -38,7 +38,7 @@ class AppAdministracion_Usuarios(models.Model):
     perfil = models.IntegerField(null=False)
 
 
-##insert into AppAdministracion_Usuarios values('admin', 'adminadmin','a@admin.cl','administrador general',0)
+#insert into AppAdministracion_Usuarios values('admin', 'adminadmin','a@admin.cl','administrador general',0)
 
 
 

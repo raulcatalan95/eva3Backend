@@ -18,7 +18,12 @@ from django.urls import path, include
 
 urlpatterns = [
     path('',views.inicio),
-    path('cuentas/',include('django.contrib.auth.urls')),
+    path('login', views.login),
+    path('sesion', views.sesion),
+    path('admin-general', views.adminGeneral),
+    path('admin-oficina', views.adminOficina),
+    path('admin-vehiculos', views.adminVehiculos),
+    path('admin-computacion', views.adminComputacion),
     path('home', views.home),
     path('ingresarArticulos', views.ingresarArticulos),
     path('registrarArticulos', views.registrarArticulos),

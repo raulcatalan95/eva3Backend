@@ -1,0 +1,73 @@
+{% extends "index.html" %} {% block titulo %} Listado de Articulos {% endblock %} {% block body %}
+<h1>Listado de Articulos </h1>
+<form action="filtroarticulo" method="GET">
+
+    <h3>Busqueda avanzada</h3>
+    <h4>{{mensaje}}</h4>
+    <!--Se incorpora mejora visual de la busqueda avanzada-->
+    <div class="row">
+      <div class="col">
+        <input type="text" name= "nombre_artic" class="form-control" placeholder="Ingrese nombre del activo" aria-label="nombre_artic">
+      </div>
+      <div class="col">
+        <input type="number" name= "numero_artic" class="form-control" placeholder="Ingrese numero del articulo" aria-label="numero_artic">
+      </div>
+      <div class="col">
+        <input type="text" name= "ubicacion_artic" class="form-control" placeholder="Ingrese Ubicacion del articulo" aria-label="ubicacion_artic">
+      </div>      
+      <ul></ul><ul></ul><ul></ul>
+      <div class="col-12">
+        <button type="submit" class="btn btn-success btn-block">Buscar</button>
+        <button type="reset" class="btn btn-danger btn-block" onclick="document.location.href='listarArticulos'">Limpiar</button>
+      </div>
+    </div>
+  </form>
+
+
+
+    <table class="table">
+        <thead>
+            
+          <tr>
+            <th scope="col">Numero de Articulo</th>
+            <th scope="col">Nombre </th>
+            <th scope="col">Ubicacion</th>
+            <th scope="col">Stock</th>
+            <th scope="col">descripcion</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+            <tbody>
+                {% for z in  articulos %}
+                <tr>
+                    <td>{{z.nro_articulo}}</td>
+                    <td>{{z.nombre}}</td>
+                    <td>{{z.ubicacion}}</td>
+                    <td>{{z.stock}}</td>
+                    <td>{{z.descripcion}}</td>
+                
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tbody>
+                {% if fullarticulo %}
+                <h4>El filtro de busqueda es: {{query}}</h4>
+                <h4>La cantidad de registros es {{contador}}</h4>
+  
+                    {% for q in fullarticulo %}
+  
+                    <tr>
+                    <td>{{q.nro_articulo}}</td>
+                    <td>{{q.nombre}}</td>
+                    <td>{{q.ubicacion}}</td>
+                    <td>{{q.stock}}</td>
+                    <td>{{q.descripcion}}</td>                  
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+          
+      </table>
+
+
+{% endblock %}

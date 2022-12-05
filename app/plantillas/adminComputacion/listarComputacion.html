@@ -1,0 +1,73 @@
+{% extends "index.html" %} {% block titulo %} Listado de Articulos {% endblock %} {% block body %}
+<h1>Listado de Articulos </h1>
+<form action="filtroComputacion" method="GET">
+
+    <h3>Busqueda avanzada</h3>
+    <h4>{{mensaje}}</h4>
+    <!--Se incorpora mejora visual de la busqueda avanzada-->
+    <div class="row">
+      <div class="col">
+        <input type="text" name= "numero_insumo" class="form-control" placeholder="Ingrese Numero de insumo" aria-label="numero_insumo">
+      </div>
+      <div class="col">
+        <input type="text" name= "nombre" class="form-control" placeholder="Ingrese Nombre Insumo" aria-label="nombre">
+      </div>
+      <ul></ul><ul></ul><ul></ul>
+      <div class="col-12">
+        <button type="submit" class="btn btn-success btn-block">Buscar</button>
+        <button type="reset" class="btn btn-danger btn-block" onclick="document.location.href='listarComputacion'">Limpiar</button>
+      </div>
+    </div>
+  </form>
+
+
+
+    <table class="table">
+        <thead>
+            
+          <tr>
+            <th scope="col">Numero de Insumo</th>
+            <th scope="col">Nombre </th>
+            <th scope="col">Fecha de Adquisicion </th>
+            <th scope="col">Marca</th>
+            <th scope="col">Stock</th>
+            <th scope="col">descripcion</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+            <tbody>
+                {% for z in  computacion %}
+                <tr>
+                    <td>{{z.numero_insumo}}</td>
+                    <td>{{z.nombre}}</td>
+                    <td>{{z.fecha_adquisicion}}</td>
+                    <td>{{z.marca}}</td>
+                    <td>{{z.stock}}</td>
+                    <td>{{z.descripcion}}</td>
+                
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tbody>
+                {% if fullcomputacion %}
+                <h4>El filtro de busqueda es: {{query}}</h4>
+                <h4>La cantidad de registros es {{contador}}</h4>
+  
+                    {% for q in fullcomputacion %}
+  
+                    <tr>
+                        <td>{{q.numero_insumo}}</td>
+                        <td>{{q.nombre}}</td>
+                        <td>{{q.fecha_adquisicion}}</td>
+                        <td>{{q.marca}}</td>
+                        <td>{{q.stock}}</td>
+                        <td>{{q.descripcion}}</td>               
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+          
+      </table>
+
+
+{% endblock %}

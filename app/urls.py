@@ -22,14 +22,29 @@ urlpatterns = [
     path('home', views.home),
     path('ingresarArticulos', views.ingresarArticulos),
     path('listarArticulos', views.listarArticulos),
+    path('eliminaArticulo', views.eliminaArticulo),
+    path('eliminarArticulos', views.eliminarArticulos),
     path('actualizarArticulos', views.actualizarArticulos),
+    path('ingresarVehiculo', views.ingresarVehiculo),
+    path('registrarVehiculo', views.registrarVehiculo),
     path('registrarArticulos', views.registrarArticulos),
     path('editarArticulo', views.editarArticulo),
+    path('actualizarVehiculo', views.actualizarVehiculo),
+    path('editarVehiculo', views.editarVehiculo),
     path('filtroarticulo', views.filtroarticulo),
+    path('eliminarVehiculo', views.eliminarVehiculo),
+    path('eliminaVehiculo', views.eliminaVehiculo),
+    path('listarVehiculo', views.listarVehiculo),
+    path('filtroVehiculo', views.filtroVehiculo),
+    path('ingresarComputacion', views.ingresarComputacion),
+    path('filtroComputacion', views.filtroComputacion),
+    path('listarComputacion', views.listarComputacion),
+    path('registrarComputacion', views.registrarComputacion),
+    path('editarComputacion', views.editarComputacion),
+    path('actualizarComputacion', views.actualizarComputacion),
+    path('eliminarComputacion', views.eliminarComputacion),
+    path('eliminaComputacion', views.eliminaComputacion),
     path('registro', views.registro, name='registro'),
     path('logout',views.cerrar_sesion),
-    
-
-
 
 ]

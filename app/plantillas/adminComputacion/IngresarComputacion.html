@@ -1,0 +1,37 @@
+{% extends "index.html" %} {% block titulo %} Articulos {% endblock %} {% block body %}
+<h1>Registro de Articulos</h1>
+<form action="registrarComputacion" method="post"> {% csrf_token %}
+    <table>
+        <h1>{{mensaje}}</h1>
+        <tr>
+            <td>Numero Insumo</td>
+            <td><input type="number" name="numero_insumo" readonly="yes" value="{{idco}}"/></td>
+        </tr>
+        <tr>
+            <td>Nombre</td>
+            <td><input type="text" name="nombre" placeholder="Ingrese Nombre Insumo" required/></td>
+        </tr>
+        <tr>
+            <td>Fecha Adquisicion</td>
+            <td><input type="date" name="fecha_adquisicion" placeholder="Ingrese Fechas Adquisicion" required/></td>
+        </tr>
+        <tr>
+            <td>Marca</td>
+            <td><input type="text" name="marca" placeholder="Ingrese Marca" required/></td>
+        </tr>
+        <tr>
+            <td>Stock</td>
+            <td><input type="number" name="stock" placeholder="Ingrese Cantidad" required/></td>
+        </tr>
+        <tr>
+            <td>Descripicion</td>
+            <td><input type="text" name="descripcion" placeholder="Ingrese Descripcion" required/></td>
+        </tr>
+    </table>
+    <div class="form-group py-5">
+        <button type="submit" class="btn btn-success btn-block">Ingresar</button>
+        <button type="reset" class="btn btn-danger btn-block" onclick="document.location.href='#'">Cancelar</button>
+    </div>
+</form>
+
+{% endblock %}

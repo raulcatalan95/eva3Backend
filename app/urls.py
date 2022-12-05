@@ -44,6 +44,13 @@ urlpatterns = [
     path('actualizarComputacion', views.actualizarComputacion),
     path('eliminarComputacion', views.eliminarComputacion),
     path('eliminaComputacion', views.eliminaComputacion),
+    path('eliminarUsuario', views.eliminarUsuario),
+    path('eliminaUsuario', views.eliminaUsuario),
+    path('ingresarUsuario', views.ingresarUsuario),
+    path('registrarUsuario', views.registrarUsuario),
+    path('listarUsuario', views.listarUsuario),
+    path('actualizarUsuario', views.actualizarUsuario),
+    path('editarUsuario', views.editarUsuario),
     path('registro', views.registro, name='registro'),
     path('logout',views.cerrar_sesion),
 

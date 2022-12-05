@@ -1,0 +1,33 @@
+{% extends "index.html" %} {% block titulo %} Articulos {% endblock %} {% block body %}
+<h1>Registro de Articulos</h1>
+<form action="registrarUsuario" method="post"> {% csrf_token %}
+    <table>
+        <h1>{{mensaje}}</h1>
+        <tr>
+            <td>Usuario</td>
+            <td><input type="text" name="username"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="text" name="password" placeholder="Ingrese Password" required/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="email" placeholder="Ingrese Email" required/></td>
+        </tr>
+        <tr>
+            <td>Nombre</td>
+            <td><input type="text" name="nombre" placeholder="Ingrese Nombre" required/></td>
+        </tr>
+        <tr>
+            <td>perfil</td>
+            <td><input type="text" name="perfil" placeholder="Ingrese Pefil" required/></td>
+        </tr>
+    </table>
+    <div class="form-group py-5">
+        <button type="submit" class="btn btn-success btn-block">Ingresar</button>
+        <button type="reset" class="btn btn-danger btn-block" onclick="document.location.href='#'">Cancelar</button>
+    </div>
+</form>
+
+{% endblock %}

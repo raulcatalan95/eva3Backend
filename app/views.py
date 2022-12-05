@@ -410,7 +410,109 @@ def eliminaComputacion(request):
             return render(request, "respuestaHtas.html",{"mensaje":mensaje})
         else:
             mensaje = 'Ha ocurrido un problema al tratar de eliminar el articulo'
-        return render(request, "respuestaHtas.html",{"mensaje":mensaje})    
+        return render(request, "respuestaHtas.html",{"mensaje":mensaje}) 
+
+
+def eliminarUsuario(request):
+    return render(request,"adminGeneral/eliminarUsuario.html")
+
+def eliminaUsuario(request):
+    
+    mensaje = None
+    try:
+        usuar = AppAdministracion_Usuarios.objects.get( username = request.POST["username"])
+        usuar.delete()
+        mensaje = "Usuario eliminado"
+        return render(request, "respuestaHtas.html",{"mensaje":mensaje})
+    except Exception as ex:
+        if str(ex.args).find('does not exist') > 0:
+            mensaje = 'Usuario no existe'
+            return render(request, "respuestaHtas.html",{"mensaje":mensaje})
+        else:
+            mensaje = 'Ha ocurrido un problema al tratar de eliminar el Usuario'
+        return render(request, "respuestaHtas.html",{"mensaje":mensaje})     
+
+def ingresarUsuario(request):
+
+    return render(request,"adminGeneral/ingresarUsuario.html")
+    
+def registrarUsuario(request):
+    mensaje = "Usuario ingresado correctamente"
+    username_a = request.POST['username']
+    password_a= request.POST['password']
+    email_a = request.POST['email']
+    nombre_a = request.POST['nombre']
+    perfil_a = request.POST['perfil']
+
+    AppAdministracion_Usuarios.objects.create(username = username_a,password = password_a, email = email_a,nombre=nombre_a, perfil = perfil_a)
+    return render(request, 'respuestaHtas.html',{"mensaje": mensaje})
+
+def listarUsuario(request):
+
+    z = AppAdministracion_Usuarios.objects.all()
+
+    return render(request,"adminGeneral/listarUsuario.html", {'usuario': z})
+
+def actualizarUsuario(request):
+    return render(request, 'adminGeneral/actualizarUsuario.html')
+
+
+def editarUsuario(request):
+    usu = None
+    mensaje = ""
+    try:
+        usu = AppAdministracion_Usuarios.objects.get(username = request.GET["username"])
+        return render(request, "adminGeneral/actualizarUsuario.html", {"usuar":usu})
+    except:
+        usu = None
+    
+    if usu == None:
+        username = None
+        try:
+            username = request.POST["username"]
+        except:
+            username = None
+
+        if username != None:
+            usu = AppAdministracion_Usuarios.objects.get(username = username)
+
+            username_a = request.POST["username"]
+            password_a = request.POST["password"]
+            email_a = request.POST["email"]
+            nombre_a = request.POST["nombre"]
+            perfil_a = request.POST["perfil"]
+            usu.username = username_a
+            usu.nombre = nombre_a
+            usu.password = password_a
+            usu.email = email_a
+            usu.perfil = perfil_a
+            
+
+            try:
+                usu.save()
+                mensaje = "Usuario actualizado con exito"
+            except:
+                mensaje = "Ha ocurrido un error al actualizar el Usuario"
+
+
+            return render(request, "adminGeneral/actualizarUsuario.html", {"mensaje":mensaje})
+        
+        else:
+            mensaje = "No se ha encontrado el Usuario ingresado"
+
+            return render(request, "adminGeneral/actualizarUsuario.html", {"mensaje":mensaje})
+    else:
+        mensaje = "No se encontró el Articulo ingresado"
+
+        return render(request, "adminGeneral/actualizarUsuario.html", {"mensaje":mensaje})
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,36 @@
+{% extends "index.html" %} 
+{% block titulo %} APP Administracion {% endblock %} {% block body %}
+
+<h1>Listado de Usuarios </h1>
+
+    <table class="table">
+        <thead>
+            
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">password </th>
+            <th scope="col">Email</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Perfil</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+            <tbody>
+                {% for z in usuario %}
+                <tr>
+                    <td>{{z.username}}</td>
+                    <td>**********</td>
+                    <td>{{z.email}}</td>
+                    <td>{{z.nombre}}</td>
+                    <td>{{z.perfil}}</td>
+
+                
+                </tr>
+                {% endfor %}
+            </tbody>
+          
+      </table>
+
+
+{% endblock %}
